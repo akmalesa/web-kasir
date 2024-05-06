@@ -10,10 +10,18 @@
         <div class="row">
             <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                 <h3 class="font-weight-bold">Kategori</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, a!</p>
+                <p>Masukan kategori dari barang yang akan kamu jual?</p>
             </div>
             <div class="col-12">
-                <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#modal">tambah data</button>
+
+                <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal">tambah data</button>
+
+                <a href="{{ route('export-kategori')}}" class="btn btn-success">
+                <i class="fa fa-file-excel"></i>Export</a>
+
+                <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#import"><i class="fas fa-file-excel"></i>Import</button>
+
+
                 <div class="card p-3">
                     <div class="card-body">
                         @include('kategori.data')

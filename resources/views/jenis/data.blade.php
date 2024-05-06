@@ -12,7 +12,7 @@
         <tr>
             <td>{{ $i = !isset($i)?$i=1:++$i }}</td>
             <td>{{ $j->nama_jenis }}</td>
-            <td>{{ $j->kategori->nama }}</td>
+            <td>{{@$j->kategori->nama }}</td>
             <td>
                 <button class="btn" type="button" title="Edit"
                 data-mode="edit"

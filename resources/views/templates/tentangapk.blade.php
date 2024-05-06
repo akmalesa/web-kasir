@@ -21,13 +21,13 @@
                     <table border="1px" class="col-3" >
                         <tr>
                             <td>
-                                Melayani tentang pemesanan makanan
+                                Melayani tentang pemesanan makanan dan minuman
                             </td>
                         </tr>
                     </table>
                     <br>
                     <h6>Sejarah Aplikasi</h6>
-                    <p>Aplikasi dibuat sebagai project lalu di lanjutkan pada TO</p>
+                    <p>Aplikasi dibuat sebagai project dengan penuh perjuangan setiap harinya.</p>
                 </div>
             </div>
         </div>

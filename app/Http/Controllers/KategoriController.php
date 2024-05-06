@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Kategori;
 use App\Http\Requests\StoreKategoriRequest;
 use App\Http\Requests\UpdateKategoriRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\KategoriExport;
+use App\Imports\KategoriImport;
+use Illuminate\Http\Request;
 
 class KategoriController extends Controller
 {
@@ -13,7 +17,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $data['kategoris'] = Kategori::get();
+        $data['kategori'] = Kategori::get();
         // dd(compact('data'));
         return view('kategori.index')->with($data);
     }
@@ -72,5 +76,18 @@ class KategoriController extends Controller
     {
         $kategori->delete();
         return redirect('kategori');
+    }
+
+    public function exportData() {
+        $date = date('Y-m-d');
+        return Excel::download(new KategoriExport, $date.'_kategori.xlsx');
+    }
+
+    public function import(Request $request) {
+        $file = $request->file('file');
+        $namafile = $file->getClientOriginalName();
+        $file->move('DataKategori', $namafile);
+        Excel::import(new KategoriImport, public_path('/DataKategori/'.$namafile));
+        return redirect()->back()->with('success', 'Import data berhasil');
     }
 }

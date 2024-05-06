@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nomor_meja');
             $table->integer('kapasitas');
-            $table->string('status');
+            $table->enum('status', ['free', 'booked'])->default('free');
             $table->timestamps();
         });
     }

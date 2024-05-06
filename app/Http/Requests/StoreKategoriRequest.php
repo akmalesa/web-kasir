@@ -25,5 +25,12 @@ class StoreKategoriRequest extends FormRequest
             'nama' => 'required'
         ];
     }
-    
+
+
+    public function messages()
+    {
+        return [
+            'nama.required' => 'Data nama belum diisi!!'
+        ];
+    }
 }

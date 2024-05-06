@@ -29,17 +29,55 @@
               <div class="brand-logo">
                 <img src="{{ asset ('template')}}/images/logo.svg" alt="logo">
               </div>
-              <h4>Hello! let's get started</h4>
+              <h4>Hello! Login Dulu ya!!    </h4>
               <h6 class="font-weight-light">Sign in to continue.</h6>
-              <form class="pt-3">
+              <form action="{{route('cekLogin')}}" method="post" novalidate>
+                @csrf
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
+                  <input type="email" class="form-control @error('email')
+                    is-invalid
+                  @enderror" id="email" name="email" placeholder="Email" value="{{old('email')}}">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="icon envelope-icon"></span>
+                    </div>
+                  </div>
+                  @error('email')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
                 </div>
+
+
                 <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                  <input type="password" class="form-control @error('password')
+                  is invalid
+                  @enderror" id="password" placeholder="Password" name="password" value="{{old('password')}}">
                 </div>
+
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="icon lock-icon"></span>
+                    </div>
+                  </div>
+                  @error('password')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+
+                @error('nofound')
+                  <div class="row mb-2">
+                    <div class="col-12 text-center text-danger">
+                        {{ $message }}
+                    </div>
+                  </div>
+                  @enderror
+
                 <div class="mt-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="{{ asset ('template')}}/index.html">SIGN IN</a>
+                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="/">SIGN IN</a>
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">
                   <div class="form-check">
@@ -48,10 +86,10 @@
                       Keep me signed in
                     </label>
                   </div>
-                  <a href="#" class="auth-link text-black">Forgot password?</a>
+                  <a href="#" class="auth-link text-black">Lupa Password?</a>
                 </div>
                 <div class="text-center mt-4 font-weight-light">
-                  Don't have an account? <a href="register.html" class="text-primary">Create</a>
+                  Belum Punya Akun? <a href="register.html" class="text-primary">Buat</a>
                 </div>
               </form>
             </div>

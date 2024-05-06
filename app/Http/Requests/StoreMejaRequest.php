@@ -27,4 +27,13 @@ class StoreMejaRequest extends FormRequest
             'status'     => 'required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'nomor_meja.required' => 'No meja belum di isi!!',
+            'kapasitas.required'  => 'Kapasitas nya isi dulu!!',
+            'status'              => 'status tidak boleh kosong!!'
+        ];
+    }
 }

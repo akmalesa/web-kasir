@@ -16,7 +16,7 @@
             <td>{{ $i = !isset($i)?$i=1:++$i }}</td>
             <td>{{ $m->nama_menu }}</td>
             <td>{{ $m->harga }}</td>
-            <td>{{ $m->image }}</td>
+            <td><img width="70px" src="{{ asset('storage/image/' . $m->image) }}" alt=""></td>
             <td>{{ $m->deskripsi }}</td>
             <td>{{ $m->jenis->nama_jenis }}</td>
             <td>

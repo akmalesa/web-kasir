@@ -16,4 +16,8 @@ class Menu extends Model
         return $this->belongsTo(Jenis::class, 'jenis_id');
     }
 
+    public function stoks() {
+        return $this->hasMany(Stok::class, 'menu_id');
+    }
+
 }

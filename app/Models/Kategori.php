@@ -9,10 +9,10 @@ class Kategori extends Model
 {
     use HasFactory;
 
-    protected $table = 'kategoris';
+    protected $table = 'kategori';
     protected $guarded = ['id'];
 
     public function jenis() {
-        return $this->hasMany(Jenis::class);                
+        return $this->hasMany(Jenis::class);
     }
 }

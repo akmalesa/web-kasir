@@ -30,7 +30,7 @@
                 <form action="pelanggan/{{ $p->id }}" style="display: inline" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-delete" title="DELETE"><i class="ti-trash text-danger"></i></button>
+                    <button type="button" class="btn btn-delete" title="DELETE"><i class="ti-trash text-danger"></i></button>
                 </form>
             </td>
         </tr>

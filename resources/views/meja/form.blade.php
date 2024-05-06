@@ -13,7 +13,7 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="nomor_meja">No Meja</label>
-                    <input type="text" class="form-control" id="nomor_meja" name="nomor_meja">
+                    <input type="number" class="form-control" id="nomor_meja" name="nomor_meja">
                 </div>
 
                 <div class="form-group">
@@ -22,8 +22,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="status">Status</label>
-                    <input type="text" class="form-control" id="status" name="status">
+                    <label for="status">Status:</label>
+                    <select class="form-control" id="status" name="status">
+                        <option value="free">Free</option>
+                        <option value="booked">Booked</option>
+                    </select>
                 </div>
 
             </div>

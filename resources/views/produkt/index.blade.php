@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                 <h3 class="font-weight-bold">Produk</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, a!</p>
+                <p>Produk yang ingin di titip kan</p>
             </div>
             <div class="col-12">
                 <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#modal">tambah data</button>

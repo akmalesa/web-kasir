@@ -6,6 +6,10 @@ use App\Models\Jenis;
 use App\Http\Requests\StoreJenisRequest;
 use App\Http\Requests\UpdateJenisRequest;
 use App\Models\Kategori;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\JenisExport;
+use App\Imports\JenisImport;
+use Illuminate\Http\Request;
 
 class JenisController extends Controller
 {
@@ -57,9 +61,9 @@ class JenisController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateJenisRequest $request, Jenis $jenis)
+    public function update(UpdateJenisRequest $request, Jenis $jenis, $id)
     {
-        $jenis->update($request->all());
+        Jenis::find($id)->update($request->all());
 
         return redirect('jenis');
     }
@@ -69,7 +73,19 @@ class JenisController extends Controller
      */
     public function destroy(Jenis $jenis)
     {
-        $jenis->delete();
-        return redirect('jenis');
+       Jenis::where('id', $jenis)->delete();
+    }
+
+    public function exportData() {
+        $date = date('Y-m-d');
+        return Excel::download(new JenisExport, $date.'_jenis.xlsx');
+    }
+
+    public function import(Request $request){
+        $data = $request->file('file');
+        $namafile = $data->getClientOriginalName();
+        $data->move('DataJenis', $namafile);
+        Excel::import(new JenisImport, \public_path('/DataJenis/'.$namafile));
+        return redirect()->back()->with('success', 'Import data berhasil');
     }
 }

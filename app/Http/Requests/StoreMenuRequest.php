@@ -22,10 +22,12 @@ class StoreMenuRequest extends FormRequest
     public function rules(): array
     {
         return [
+
             'nama_menu' => 'required',
             'harga'     => 'required',
-            'image'     => 'required',
-            'deskripsi' => 'required'
+            'image'     => 'required|mimes:png,jpg,jpeg|max:2048',
+            'deskripsi' => 'required',
+            'jenis_id'  => 'required'
         ];
     }
 }

@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('nama_menu');
             $table->decimal('harga',10,2);
-            $table->string('image')->nullable();
             $table->text('deskripsi');
             $table->foreignId('jenis_id');
 
             $table->foreign('jenis_id')->references('id')->on('jenis')->onDelete('cascade');
-            
+
             $table->timestamps();
         });
     }

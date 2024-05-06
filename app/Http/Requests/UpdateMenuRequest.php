@@ -24,8 +24,9 @@ class UpdateMenuRequest extends FormRequest
         return [
             'nama_menu' => 'required',
             'harga'     => 'required',
-            'image'     => 'required',
-            'deskripsi' => 'required'
+            'image'     => 'required|mimes:png,jpg,jpeg|max:2048',
+            'deskripsi' => 'required',
+            'jenis_id'  => 'required'
         ];
     }
 }

@@ -32,23 +32,27 @@ class TransaksiController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreTransaksiRequest $request)
-    {
-        try {
-            $last_id = Transaksi::where('tanggal', date('Y-m-d'))->orderBy('tanggal', 'desc')->select('id')->first();
-            $notrans = $last_id = null ? date('Ymd').'0001': date('Ymd').sprintf('%04d', substr($last_id, 8, 4));
+{
+    try {
+        // Membuat nomor transaksi baru
+        $last_id = Transaksi::where('tanggal', date('Y-m-d'))->orderBy('tanggal', 'desc')->select('id')->first();
+        $notrans = $last_id ? date('Ymd').'0001': date('Ymd').sprintf('%04d', substr($last_id, 8, 4));
 
-            $insertTransaksi = Transaksi::create([
-                'id'                => $notrans,
-                'tanggal'           => date('Y-m-d'),
-                'total_harga'       => $request->total,
-                'metode_pembayaran' => 'cash',
-                'keterangan'        => ''
-            ]);
-        }catch (Exception | QueryException |PDOException $e) {
-            return $e;
-            DB::rollback();
-        }
+        // Menyimpan transaksi ke dalam database
+        $insertTransaksi = Transaksi::create([
+            'id'                => $notrans,
+            'tanggal'           => date('Y-m-d'),
+            'total_harga'       => $request->total,
+            'metode_pembayaran' => 'cash', // Sesuaikan dengan cara Anda mendapatkan metode pembayaran
+            'keterangan'        => '' // Sesuaikan dengan cara Anda mendapatkan keterangan
+        ]);
+
+        // Berikan respons atau tindakan lain sesuai kebutuhan Anda
+    } catch (Exception | QueryException | PDOException $e) {
+        return $e;
+        DB::rollback(); // Tambahkan rollback jika Anda menggunakan transaksi database
     }
+}
 
     /**
      * Display the specified resource.

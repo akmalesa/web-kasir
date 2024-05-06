@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Pelanggan;
 use App\Http\Requests\StorePelangganRequest;
 use App\Http\Requests\UpdatePelangganRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PelangganExport;
+use App\Imports\PelangganImport;
+use Illuminate\Http\Request;
 
 class PelangganController extends Controller
 {
@@ -70,5 +74,18 @@ class PelangganController extends Controller
     {
          $pelanggan->delete();
         return redirect('pelanggan');
+    }
+
+    public function exportData() {
+        $date = date('Y-m-d');
+        return Excel::download(new PelangganExport, $date.'_pelanggan.xlsx');
+    }
+
+    public function import(Request $request){
+        $data = $request->file('file');
+        $namafile = $data->getClientOriginalName();
+        $data->move('DataPelanggan', $namafile);
+        Excel::import(new PelangganImport, \public_path('/DataPelanggan/'.$namafile));
+        return redirect()->back()->with('success', 'Import data berhasil');
     }
 }

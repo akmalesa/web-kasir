@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Stok extends Model
 {
     use HasFactory;
+
+    protected $table = 'stok';
+    protected $guarded = ['id'];
+
+
+    public function menu() {
+        return $this->belongsTo(Menu::class, 'menu_id', 'id');
+    }
 }
+
+

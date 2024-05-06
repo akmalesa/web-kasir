@@ -7,7 +7,7 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($kategoris as $c)
+      @foreach ($kategori as $c)
         <tr>
             <td>{{ $i = !isset($i)?$i=1:++$i }}</td>
             <td>{{ $c->nama }}</td>

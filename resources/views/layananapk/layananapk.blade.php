@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                 <h3 class="font-weight-bold">Layanan Aplikasi</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, a!</p>
+                <p>Selamat datang di aplikasi saya, ada yang perlu di bantu?</p>
             </div>
             <div class="col-12">
                 <div class="card p-3">
